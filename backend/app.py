@@ -117,6 +117,23 @@ class TotalDistanceByMonth(Resource):
 
         return {'distance_by_month': distance_by_month}, 200
 
+class FastestWorkout(Resource):
+    def get(self):
+        workouts = Workout.query.all()
+        average_pace = []
+
+        for workout in workouts:
+            duration = workout.duration
+            distance = workout.distance
+            if duration and distance:
+                average_pace.append({
+                    "workout_id": workout.id,
+                    "route_nickname": workout.route_nickname,
+                    "average_pace": f"{round(float(duration / distance), 2)} min/mile"
+                })
+
+        return {'workouts': average_pace}, 200
+
 from flask import send_from_directory
 
 @app.route('/')
@@ -126,6 +143,7 @@ def serve_homepage():
 # use api.add_resource to add the paths
 api.add_resource(Workouts, '/workouts', '/workouts/<int:workout_id>')
 api.add_resource(TotalDistanceByMonth, '/workouts/total_distance_by_month')
+api.add_resource(FastestWorkout, '/workouts/fastest_workout')
 
 if __name__ == '__main__':
     app.run(port=5000, debug=True)
