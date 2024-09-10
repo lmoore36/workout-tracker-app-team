@@ -117,7 +117,7 @@ class TotalDistanceByMonth(Resource):
 
         return {'distance_by_month': distance_by_month}, 200
 
-class FastestWorkout(Resource):
+class AveragePace(Resource):
     def get(self):
         workouts = Workout.query.all()
         average_pace = []
@@ -143,7 +143,7 @@ def serve_homepage():
 # use api.add_resource to add the paths
 api.add_resource(Workouts, '/workouts', '/workouts/<int:workout_id>')
 api.add_resource(TotalDistanceByMonth, '/workouts/total_distance_by_month')
-api.add_resource(FastestWorkout, '/workouts/fastest_workout')
+api.add_resource(AveragePace, '/workouts/average_pace')
 
 if __name__ == '__main__':
     app.run(port=5000, debug=True)
