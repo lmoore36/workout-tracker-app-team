@@ -4,21 +4,40 @@ async function fetchWorkouts() {
   const response = await fetch(apiUrl);
   const data = await response.json();
   const workouts = data.workouts;
-  const workoutList = document.getElementById('workout-list');
-  workoutList.innerHTML = '';
+  const workoutTable = document.getElementById('workout-table');
+  
+  workoutTable.innerHTML = '';
+
+  const tableHeader = `
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Distance (miles)</th>
+      <th>Duration (minutes)</th>
+      <th>Heart Rate (bpm)</th>
+      <th>Route</th>
+    </tr>
+  </thead>
+`;
+
+  workoutTable.innerHTML += tableHeader;
+
+  const tableBody = document.createElement('tbody');
 
   workouts.forEach(workout => {
-    const workoutItem = document.createElement('li');
-    workoutItem.classList.add('collection-item');
-    workoutItem.innerHTML = `
-      <strong>Type:</strong> ${workout.workout_type}<br>
-      <strong>Distance:</strong> ${workout.distance} km<br>
-      <strong>Duration:</strong> ${workout.duration} minutes<br>
-      <strong>Heart Rate:</strong> ${workout.heart_rate || 'N/A'} bpm<br>
-      <strong>Route:</strong> ${workout.route_nickname || 'N/A'}
+    const workoutRow = document.createElement('tr');
+
+    workoutRow.innerHTML = `
+      <td>${workout.workout_type}</td>
+      <td>${workout.distance} miles</td> <!-- assuming you converted the distance to miles -->
+      <td>${workout.duration}</td>
+      <td>${workout.heart_rate || 'N/A'}</td>
+      <td>${workout.route_nickname || 'N/A'}</td>
     `;
-    workoutList.appendChild(workoutItem);
+    tableBody.appendChild(workoutRow);
   });
+
+  workoutTable.appendChild(tableBody);
 }
 
 document.getElementById('addWorkoutForm').addEventListener('submit', async function(event) {

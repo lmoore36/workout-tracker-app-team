@@ -28,52 +28,50 @@
       margin-bottom: 20px;
     }
 
-    .btn {
-      margin-top: 20px;
-    }
-
-    #workout-list {
-      margin-top: 20px;
-    }
-
-    .collection-item {
-      padding: 10px;
-      border-bottom: 1px solid #ddd;
-    }
-
-    .back-to-dashboard {
-      position: absolute;
-      top: 20px;
-      right: 20px;
+    th {
+      font-weight: bold;
+      position: sticky;
+      top: 0;
+      background-color: #fff;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <a href="index.html" class="btn waves-effect waves-light back-to-dashboard">Back to Dashboard</a>
     <h2>Search Workouts</h2>
-    <div class="row">
-      <form id="searchForm" class="col s12">
-        <div class="input-field col s4">
-          <input id="duration" type="text" class="validate">
-          <label for="duration">Duration</label>
-        </div>
-        <div class="input-field col s4">
-          <input id="distance" type="text" class="validate">
-          <label for="distance">Distance</label>
-        </div>
-        <div class="input-field col s4">
-          <input id="workout_type" type="text" class="validate">
-          <label for="workout_type">Workout Type</label>
-        </div>
-        <div class="input-field col s12">
-          <button class="btn waves-effect waves-light" type="submit" name="action">
-            Search Workouts
-          </button>
-        </div>
-      </form>
-    </div>
-    <ul id="workout-list" class="collection"></ul>
+    <form id="searchForm">
+      <div class="input-field">
+        <input id="duration" type="text" class="validate">
+        <label for="duration">Duration</label>
+      </div>
+      <div class="input-field">
+        <input id="distance" type="text" class="validate">
+        <label for="distance">Distance</label>
+      </div>
+      <div class="input-field">
+        <input id="workout_type" type="text" class="validate">
+        <label for="workout_type">Workout Type</label>
+      </div>
+      <div class="input-field col s12">
+        <button class="btn waves-effect waves-light" type="submit" name="action">
+          Search Workouts
+        </button>
+      </div>
+    </form>
+    <table id="workout-table" class="highlight responsive-table">
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Distance (km)</th>
+          <th>Duration (minutes)</th>
+          <th>Heart Rate (bpm)</th>
+          <th>Route</th>
+        </tr>
+      </thead>
+      <tbody id="searchResults">
+        <!-- Search results will be inserted here -->
+      </tbody>
+    </table>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>

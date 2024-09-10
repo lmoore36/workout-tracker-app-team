@@ -4,6 +4,7 @@ from flask_cors import CORS
 from extensions import db, migrate
 from models import Workout
 from sqlalchemy import extract, func
+import calendar
 
 app = Flask(__name__)
 
@@ -106,11 +107,10 @@ class TotalDistanceByMonth(Resource):
             .all()
         )
 
-        # Format the results into a list of dictionaries
         distance_by_month = [
             {
-                "month": int(result.month),
-                "total_distance": round(float(result.total_distance * 0.621371), 2)
+                "month": calendar.month_name[int(result.month)],
+                "total_distance": round(float(result.total_distance * 0.621371), 2) 
             }
             for result in results
         ]
