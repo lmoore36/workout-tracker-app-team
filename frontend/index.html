@@ -105,12 +105,22 @@
       <h3>Total Distance by Month</h3>
       <canvas id="monthlyDistancesChart"></canvas>
     </div>
+
+    <div id="environmental-impact-section">
+      <h3>Environmental Impact</h3>
+      <div>
+        <h4>Total Distance: <span id="totalDistanceValue"></span> km</h4>
+        </div>
+      <div id="treesSaved"></div>
+    </div>
+
   </div>  
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="./scripts/fetchDistanceByMonth.js"></script>
   <script src="./scripts/fetchAllWorkouts.js"></script>
+  <script src="./scripts/fetchTotalDistance.js"></script>
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -121,6 +131,18 @@
       var dateInstances = M.Datepicker.init(dateElems, {
         format: 'yyyy-mm-dd'
       });
+    });
+
+    document.addEventListener('DOMContentLoaded', async function() {
+      try {
+        const totalDistance = await fetchTotalDistance();
+        console.log('Total Distance:', totalDistance);
+
+        document.getElementById('totalDistanceValue').innerText = totalDistance;
+
+      } catch (error) {
+        console.error('Error fetching total distance:', error);
+      }
     });
   </script>
 

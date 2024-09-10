@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
         'July', 'August', 'September', 'October', 'November', 'December'
       ],
       datasets: [{
-        label: 'Distance (mi)',
+        label: 'Distance (km)',
         data: Array(12).fill(0),
         backgroundColor: 'rgba(75, 192, 192, 0.2)',
         borderColor: 'rgba(75, 192, 192, 1)',

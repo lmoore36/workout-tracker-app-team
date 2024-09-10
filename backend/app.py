@@ -112,7 +112,7 @@ class TotalDistanceByMonth(Resource):
             {
                 "year": int(result.year),
                 "month": calendar.month_name[int(result.month)],
-                "total_distance": round(float(result.total_distance * 0.621371), 2)  # Convert km to miles
+                "total_distance": round(float(result.total_distance), 2)
             }
             for result in results
         ]
@@ -131,10 +131,22 @@ class AveragePace(Resource):
                 average_pace.append({
                     "workout_id": workout.id,
                     "route_nickname": workout.route_nickname,
-                    "average_pace": f"{round(float(duration / distance), 2)} min/mile"
+                    "average_pace": f"{round(float(duration / distance), 2)} min/km"
                 })
 
         return {'workouts': average_pace}, 200
+    
+class TotalDistance(Resource):
+    def get(self):
+        workouts = Workout.query.all()
+        total_distance = 0
+
+        for workout in workouts:
+            distance = workout.distance
+            if distance:
+                total_distance += distance
+
+        return {'total_distance': total_distance}, 200
 
 from flask import send_from_directory
 
@@ -142,10 +154,11 @@ from flask import send_from_directory
 def serve_homepage():
     return send_from_directory('.', 'index.html')
 
-# use api.add_resource to add the paths
+
 api.add_resource(Workouts, '/workouts', '/workouts/<int:workout_id>')
 api.add_resource(TotalDistanceByMonth, '/workouts/total_distance_by_month')
 api.add_resource(AveragePace, '/workouts/average_pace')
+api.add_resource(TotalDistance, '/workouts/total_distance')
 
 if __name__ == '__main__':
     app.run(port=5000, debug=True)

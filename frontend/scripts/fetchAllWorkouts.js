@@ -12,7 +12,7 @@ async function fetchWorkouts() {
   <thead>
     <tr>
       <th>Type</th>
-      <th>Distance (miles)</th>
+      <th>Distance (kilometers))</th>
       <th>Duration (minutes)</th>
       <th>Heart Rate (bpm)</th>
       <th>Route</th>
@@ -29,7 +29,7 @@ async function fetchWorkouts() {
 
     workoutRow.innerHTML = `
       <td>${workout.workout_type}</td>
-      <td>${workout.distance} miles</td> <!-- assuming you converted the distance to miles -->
+      <td>${workout.distance} kms </td>
       <td>${workout.duration}</td>
       <td>${workout.heart_rate || 'N/A'}</td>
       <td>${workout.route_nickname || 'N/A'}</td>

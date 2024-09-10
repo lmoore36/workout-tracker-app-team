@@ -16,12 +16,9 @@ class Workout(db.Model): # type: ignore
         return {
             'id': self.id,
             'duration': self.duration,
-            'distance': self.distance_in_miles(),
+            'distance': self.distance,
             'route_nickname': self.route_nickname,
             'heart_rate': self.heart_rate,
             'date': self.date.strftime('%Y-%m-%d'),
             'workout_type': self.workout_type
         }
-    
-    def distance_in_miles(self):
-        return round(self.distance * 0.621371, 2)
