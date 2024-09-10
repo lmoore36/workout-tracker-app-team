@@ -3,6 +3,7 @@ from flask_restful import Api, Resource # type: ignore
 from flask_cors import CORS
 from extensions import db, migrate
 from models import Workout
+from sqlalchemy import extract, func
 
 app = Flask(__name__)
 
@@ -92,9 +93,39 @@ class Workouts(Resource):
         db.session.delete(workout)
         db.session.commit()
         return {'message': 'Workout deleted successfully'}, 200
+    
+class TotalDistanceByMonth(Resource):
+    def get(self):
+        results = (
+            db.session.query(
+                extract('month', Workout.date_time).label('month'),
+                func.sum(Workout.distance).label('total_distance')
+            )
+            .group_by(extract('month', Workout.date_time))
+            .order_by(extract('month', Workout.date_time))
+            .all()
+        )
+
+        # Format the results into a list of dictionaries
+        distance_by_month = [
+            {
+                "month": int(result.month),
+                "total_distance": float(result.total_distance)
+            }
+            for result in results
+        ]
+
+        return {'distance_by_month': distance_by_month}, 200
+
+from flask import send_from_directory
+
+@app.route('/')
+def serve_homepage():
+    return send_from_directory('.', 'index.html')
 
 # use api.add_resource to add the paths
 api.add_resource(Workouts, '/workouts', '/workouts/<int:workout_id>')
+api.add_resource(TotalDistanceByMonth, '/workouts/total_distance_by_month')
 
 if __name__ == '__main__':
-    app.run(port=5555, debug=True)
+    app.run(port=5000, debug=True)
