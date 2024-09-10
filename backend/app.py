@@ -26,7 +26,19 @@ class Workouts(Resource):
                 return {'error': 'Workout not found'}, 404
             return {'workout': workout.to_dict()}, 200
         else:
-            workouts = Workout.query.all()
+            query = Workout.query
+            duration = request.args.get('duration')
+            distance = request.args.get('distance')
+            workout_type = request.args.get('workout_type')
+            
+            if duration:
+                query = query.filter_by(duration=duration)
+            if distance:
+                query = query.filter_by(distance=distance)
+            if workout_type:
+                query = query.filter_by(workout_type=workout_type)
+                
+            workouts = query.all()
             return {'workouts': [workout.to_dict() for workout in workouts]}, 200
 
     # create

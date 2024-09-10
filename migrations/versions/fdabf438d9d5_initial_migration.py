@@ -7,13 +7,15 @@ Create Date: 2024-09-09 20:38:04.941838
 """
 from alembic import op
 import sqlalchemy as sa
+from typing import Optional
 
 
 # revision identifiers, used by Alembic.
 revision = 'fdabf438d9d5'
-down_revision = None
-branch_labels = None
-depends_on = None
+
+down_revision: Optional[str] = None
+branch_labels: Optional[str] = None
+depends_on: Optional[str] = None
 
 
 def upgrade():
