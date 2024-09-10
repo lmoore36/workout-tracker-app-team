@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const row = document.createElement('tr');
         row.innerHTML = `
           <td>${workout.workout_type || 'N/A'}</td>
-          <td>${workout.distance ? workout.distance + ' km' : 'N/A'}</td>
+          <td>${workout.distance ? workout.distance + ' mi' : 'N/A'}</td>
           <td>${workout.duration ? workout.duration + ' minutes' : 'N/A'}</td>
           <td>${workout.heart_rate ? workout.heart_rate + ' bpm' : 'N/A'}</td>
           <td>${workout.route_nickname || 'N/A'}</td>
