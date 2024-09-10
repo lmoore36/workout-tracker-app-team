@@ -1,8 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_restful import Api, Resource # type: ignore
-from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
-from flask_migrate import Migrate
 from extensions import db, migrate
 from models import Workout
 
@@ -17,7 +15,6 @@ db.init_app(app)
 migrate.init_app(app, db)
 
 api = Api(app)
-
 
 class Workouts(Resource):
     
