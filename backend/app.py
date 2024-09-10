@@ -99,18 +99,20 @@ class TotalDistanceByMonth(Resource):
     def get(self):
         results = (
             db.session.query(
-                extract('month', Workout.date_time).label('month'),
+                extract('year', Workout.date).label('year'),
+                extract('month', Workout.date).label('month'),
                 func.sum(Workout.distance).label('total_distance')
             )
-            .group_by(extract('month', Workout.date_time))
-            .order_by(extract('month', Workout.date_time))
+            .group_by(extract('year', Workout.date), extract('month', Workout.date))
+            .order_by(extract('year', Workout.date), extract('month', Workout.date))
             .all()
         )
 
         distance_by_month = [
             {
+                "year": int(result.year),
                 "month": calendar.month_name[int(result.month)],
-                "total_distance": round(float(result.total_distance * 0.621371), 2) 
+                "total_distance": round(float(result.total_distance * 0.621371), 2)  # Convert km to miles
             }
             for result in results
         ]

@@ -9,7 +9,7 @@ class Workout(db.Model): # type: ignore
     distance = db.Column(db.Float, nullable=False)
     route_nickname = db.Column(db.String(100), nullable=True)
     heart_rate = db.Column(db.Integer, nullable=True)
-    date_time = db.Column(db.DateTime, default=datetime.utcnow)
+    date = db.Column(db.Date, default=lambda: datetime.utcnow().date())
     workout_type = db.Column(db.String(50), nullable=False)
 
     def to_dict(self):
@@ -19,7 +19,7 @@ class Workout(db.Model): # type: ignore
             'distance': self.distance_in_miles(),
             'route_nickname': self.route_nickname,
             'heart_rate': self.heart_rate,
-            'date_time': self.date_time.strftime('%Y-%m-%d %H:%M:%S'),
+            'date': self.date.strftime('%Y-%m-%d'),
             'workout_type': self.workout_type
         }
     

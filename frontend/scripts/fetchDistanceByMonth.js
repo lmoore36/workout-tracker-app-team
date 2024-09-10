@@ -5,10 +5,13 @@ document.addEventListener('DOMContentLoaded', function() {
   chart = new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: [],
+      labels: [
+        'January', 'February', 'March', 'April', 'May', 'June', 
+        'July', 'August', 'September', 'October', 'November', 'December'
+      ],
       datasets: [{
         label: 'Distance (mi)',
-        data: [],
+        data: Array(12).fill(0),
         backgroundColor: 'rgba(75, 192, 192, 0.2)',
         borderColor: 'rgba(75, 192, 192, 1)',
         borderWidth: 1
@@ -35,11 +38,19 @@ async function fetchDistanceByMonth() {
 
     const data = await response.json();
 
-    const labels = data.distance_by_month.map(item => `${item.month}`);
-    const distances = data.distance_by_month.map(item => item.total_distance);
+    const currentYear = new Date().getFullYear();
 
-    chart.data.labels = labels;
-    chart.data.datasets[0].data = distances;
+    const distancesByMonth = Array(12).fill(0);
+
+    data.distance_by_month.forEach(item => {
+      const monthIndex = new Date(item.month + " 1, " + item.year).getMonth();
+      
+      if (item.year === currentYear) {
+        distancesByMonth[monthIndex] = item.total_distance;
+      }
+    });
+
+    chart.data.datasets[0].data = distancesByMonth;
     chart.update();
 
   } catch (error) {

@@ -11,9 +11,39 @@
 
     h2 { color: #333; margin-bottom: 20px; }
 
-    .btn { background-color: #4caf50; color: #fff; }
+    .form-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+    }
 
-    .btn:hover { background-color: #45a049; }
+    .form-row .input-field {
+      flex: 1;
+      min-width: 200px; /* Adjust as needed */
+    }
+
+    .form-row .btn {
+      margin-top: -10px; /* Adjust as needed */
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+    }
+
+    .btn,
+    .return-btn {
+      background-color: #4caf50;
+      color: #fff;
+    }
+
+    .return-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+
+    .btn:hover {
+      background-color: #45a049;
+    }
 
     form { margin-top: 20px; }
 
@@ -25,38 +55,54 @@
 </head>
 <body>
   <div class="container">
-    <h2> Running Workout Tracker </h2>
-    <a href="search.html" class="btn waves-effect waves-light" style="position: absolute; top: 10px; right: 10px;">Search Workouts</a>
+    <h3> Running Workout Tracker </h3>
+    <a href="search.html" class="return-btn waves-effect waves-light btn green">Search Workouts</a>
     <div class="row">
       <div class="row">
         <form id="addWorkoutForm" class="col s12">
-          <div class="input-field col s4">
-            <input id="add_route_nickname" type="text" class="validate" required>
-            <label for="add_route_nickname">Route Nickname</label>
+          <div class="form-row">
+            <div class="input-field col s4">
+              <input id="add_route_nickname" type="text" class="validate" required>
+              <label for="add_route_nickname">Route Nickname</label>
+            </div>
+            <div class="input-field col s4">
+              <input id="add_duration" type="text" class="validate" required>
+              <label for="add_duration">Duration</label>
+            </div>
+            <div class="input-field col s4">
+              <input id="add_distance" type="text" class="validate" required>
+              <label for="add_distance">Distance</label>
+            </div>
           </div>
-          <div class="input-field col s4">
-            <input id="add_duration" type="text" class="validate" required>
-            <label for="add_duration">Duration</label>
-          </div>
-          <div class="input-field col s4">
-            <input id="add_distance" type="text" class="validate" required>
-            <label for="add_distance">Distance</label>
-          </div>
-          <div class="input-field col s4">
-            <input id="add_workout_type" type="text" class="validate">
-            <label for="add_workout_type">Workout Type</label>
-          </div>
-          <div class="input-field col s12">
-            <button class="btn waves-effect waves-light" type="submit" name="action">
-              Add Workout
-            </button>
+          <div class="form-row">
+            <div class="input-field col s4">
+              <select id="add_workout_type" required>
+                <option value="" disabled selected>Choose your option</option>
+                <option value="RECOVERY">Recovery</option>
+                <option value="LONG">Long</option>
+                <option value="TEMPO">Tempo</option>
+                <option value="EASY">Easy</option>
+                <option value="INTERVAL">Interval</option>
+                <option value="HILL">Hill</option>
+              </select>
+              <label for="add_workout_type">Workout Type</label>
+            </div>
+            <div class="input-field col s4">
+              <input id="add_date" type="text" class="datepicker" required>
+              <label for="add_date">Date</label>
+            </div>
+            <div class="input-field col s12">
+              <button class="btn waves-effect waves-light" type="submit" name="action">
+                Add Workout
+              </button>
+            </div>
           </div>
         </form>
       </div>
     </div>
 
     <div id="monthly-distance-section">
-      <h2>Total Distance by Month</h2>
+      <h3>Total Distance by Month</h3>
       <canvas id="monthlyDistancesChart"></canvas>
     </div>
   </div>  
@@ -65,5 +111,18 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="./scripts/fetchDistanceByMonth.js"></script>
   <script src="./scripts/fetchAllWorkouts.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var elems = document.querySelectorAll('select');
+      var instances = M.FormSelect.init(elems);
+  
+      var dateElems = document.querySelectorAll('.datepicker');
+      var dateInstances = M.Datepicker.init(dateElems, {
+        format: 'yyyy-mm-dd'
+      });
+    });
+  </script>
+
 </body>
 </html>

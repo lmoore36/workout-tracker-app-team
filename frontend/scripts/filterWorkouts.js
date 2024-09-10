@@ -33,11 +33,12 @@ document.addEventListener('DOMContentLoaded', function() {
       data.workouts.forEach(workout => {
         const row = document.createElement('tr');
         row.innerHTML = `
+          <td>${workout.route_nickname || 'N/A'}</td>
+          <td>${workout.date || 'N/A'}</td>
           <td>${workout.workout_type || 'N/A'}</td>
           <td>${workout.distance ? workout.distance + ' mi' : 'N/A'}</td>
           <td>${workout.duration ? workout.duration + ' minutes' : 'N/A'}</td>
           <td>${workout.heart_rate ? workout.heart_rate + ' bpm' : 'N/A'}</td>
-          <td>${workout.route_nickname || 'N/A'}</td>
         `;
         workoutTableBody.appendChild(row);
       });
