@@ -110,7 +110,7 @@ class TotalDistanceByMonth(Resource):
         distance_by_month = [
             {
                 "month": int(result.month),
-                "total_distance": float(result.total_distance)
+                "total_distance": round(float(result.total_distance * 0.621371), 2)
             }
             for result in results
         ]
