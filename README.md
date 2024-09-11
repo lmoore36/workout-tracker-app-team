@@ -212,3 +212,8 @@ Getting all workouts:
 ```bash
 curl http://127.0.0.1:5000/workouts
 ```
+
+##Testing with Insomnia
+
+Import the API endpoints into Insomnia by creating a collection.
+Test each API endpoint by sending the corresponding requests (GET, POST, PUT, DELETE) with the required parameters.
