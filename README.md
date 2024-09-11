@@ -1,6 +1,8 @@
 # Workout Tracker API
 
-This project is a RESTful API for tracking workout activities such as running, jogging, or cycling. Users can create, read, update, and delete workout records. Additionally, users can retrieve aggregated workout data such as total distance covered and average pace.
+This project is a REST API built with Flask for tracking running workouts. It allows users to record workout details such as duration, distance, heart rate, and workout type, supporting full CRUD (Create, Read, Update, Delete) functionality. 
+
+The API also provides endpoints for aggregating data, such as calculating the total distance covered per month and determining the average pace of workouts. It is designed with Flask-RESTful, uses SQLAlchemy as the ORM for database interactions, and stores data in a lightweight SQLite database. 
 
 ## Table of Contents
 - [Design Decisions](#design-decisions)
@@ -14,8 +16,12 @@ This project is a RESTful API for tracking workout activities such as running, j
 
 This project uses the following design principles:
 1. **RESTful API**: The application follows RESTful design principles, allowing clients to interact with resources like workouts through standard HTTP methods (GET, POST, PUT, DELETE).
-2. **Flask and Flask-RESTful**: Flask is used as the web framework because it's lightweight and easy to extend. Flask-RESTful simplifies the development of REST APIs by offering built-in request handling and response generation.
-3. **SQLite for Database**: SQLite is chosen as the database because it is lightweight and easy to set up for development. It stores the workouts and user data in a simple format.
+2. **Flask**: Dependencies:
+Flask-RESTful: defines resources as classes with methods inside
+Flask-CORS: used to allow a frontend to access the api for demonstration
+Flask-Migrate: handles automatic database updates
+4. **SQLite for Database**: Project database, chosen for easy set up and storage.
+5. **SQLAlchemy**: Object-Relational Mapping (ORM) with easy interactions between Python development and the SQLite database.
 
 ## API Endpoints
 
@@ -153,13 +159,12 @@ This project uses the following design principles:
   ```
 
 ## Tools and Technologies
-- Flask: A lightweight Python web framework for building APIs.
-- Flask-RESTful: An extension for Flask that simplifies the creation of REST APIs.
-- Flask-CORS: Handles Cross-Origin Resource Sharing (CORS) for allowing API requests from different domains.
-- SQLAlchemy: An ORM used to interact with the SQLite database.
-- SQLite: A lightweight relational database used for development.
-- Docker (Optional): Containerizes the application for easy deployment.
-- Postman or curl: Useful tools for testing the API.
+- Flask
+- Flask-RESTful
+- Flask-CORS
+- SQLAlchemy
+- SQLite
+- Insomnia or curl: Useful tools for testing the API.
 
 ## How to Run
 
