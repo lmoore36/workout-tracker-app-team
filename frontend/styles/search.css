@@ -1,7 +1,7 @@
 body {
-    background-color: #f5f5f5;
-    color: #333;
-    font-family: Arial, sans-serif;
+    background-color: #e0f7fa; /* Light aqua blue for a nature feel */
+    color: #000000; /* Deep green for text */
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
 }
@@ -10,25 +10,79 @@ body {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-h2 {
+h3 {
+    font-family: 'Merriweather', serif; /* Organic-looking serif font */
+    color: #2e7d32; /* Earthy green for headings */
     margin-bottom: 20px;
+    text-align: center;
 }
 
 form {
     margin-bottom: 20px;
+    text-align: center;
+}
+
+.input-field label {
+    color: #388e3c; /* Green labels to match the nature theme */
+}
+
+input[type="text"]:focus {
+    border-bottom: 1px solid #2e7d32 !important;
+    box-shadow: 0 1px 0 0 #2e7d32 !important;
 }
 
 th {
     font-weight: bold;
+    text-align: center;
+    background-color: #e8f5e9; /* Light green header for table */
+    color: #2e7d32;
     position: sticky;
     top: 0;
-    background-color: #fff;
+}
+
+td {
+    text-align: center;
+    background-color: #ffffff; /* White for table rows */
+}
+
+.btn {
+    text-align: center;         /* Center text inside buttons */ 
+    background-color: #43a047; /* Green action buttons */
+    color: #fff;
+    border-radius: 6px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .return-button {
     position: absolute;
     top: 20px;
     right: 20px;
+    text-align: center;         /* Center text inside buttons */ 
+    background-color: #43a047; /* Green action buttons */
+    color: #fff;
+    border-radius: 6px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.return-button:hover {
+    background-color: #2e7d32; /* Darker green on hover */
+}
+
+button[type="submit"] {
+    background-color: #388e3c; /* Green submit button */
+}
+
+button[type="submit"]:hover {
+    background-color: #2e7d32; /* Darker green on hover */
 }
