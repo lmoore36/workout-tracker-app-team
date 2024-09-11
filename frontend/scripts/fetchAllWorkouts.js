@@ -40,37 +40,4 @@ async function fetchWorkouts() {
   workoutTable.appendChild(tableBody);
 }
 
-document.getElementById('addWorkoutForm').addEventListener('submit', async function(event) {
-  event.preventDefault();
-
-  const duration = document.getElementById('add_duration').value;
-  const distance = document.getElementById('add_distance').value;
-  const workout_type = document.getElementById('add_workout_type').value;
-  const route_nickname = document.getElementById('add_route_nickname').value;
-
-  if (!duration || !distance || !route_nickname) {
-    alert('Please fill in all required fields.');
-    return;
-  }
-
-  const response = await fetch(apiUrl, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      duration,
-      distance,
-      workout_type,
-      route_nickname
-    })
-  });
-
-  if (response.ok) {
-    fetchWorkouts();
-  } else {
-    alert('Failed to add workout.');
-  }
-});
-
 fetchWorkouts();

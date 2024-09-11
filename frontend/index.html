@@ -50,6 +50,41 @@
     label { color: #333; }
 
     .collection { margin-top: 20px; }
+
+    #environmental-impact-section {
+      padding: 20px;
+      border-radius: 10px;
+      background-color: #e0f7fa;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin-top: 20px;
+    }
+
+    #environmental-impact-section h3 {
+      color: #00796b;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .impact-info {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .impact-info h4 {
+      color: #004d40;
+      margin: 10px 0;
+    }
+
+    .impact-images {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .impact-image {
+      width: 100px;
+      height: auto;
+    }
     
   </style>
 </head>
@@ -91,6 +126,10 @@
               <input id="add_date" type="text" class="datepicker" required>
               <label for="add_date">Date</label>
             </div>
+            <div class="input-field col s4">
+              <input id="add_heart_rate" type="text" required>
+              <label for="add_heart_rate">Heart Rate</label>
+            </div>
             <div class="input-field col s12">
               <button class="btn waves-effect waves-light" type="submit" name="action">
                 Add Workout
@@ -106,13 +145,22 @@
       <canvas id="monthlyDistancesChart"></canvas>
     </div>
 
-    <div id="environmental-impact-section">
+    <div id="environmental-impact-section" class="card-panel teal lighten-4">
       <h3>Environmental Impact</h3>
-      <div>
-        <h4>Total Distance: <span id="totalDistanceValue"></span> km</h4>
-        <h4>Trees Saved: <span id="treesSavedValue"></span></h4>
+      <div class="impact-info">
+        <div class="impact-item">
+          <h4> You have run <span id="totalDistanceValue"></span> kilometers in total!</h4>
+          <h5> By running instead of driving you are benefiting the environment!</h5>
         </div>
-      <div id="treesSaved"></div>
+        <div class="impact-item">
+          <h4>Trees Saved: <span id="treesSavedValue"></span></h4>
+          <img src="./images/tree-clip-art.png" alt="Tree Image" class="impact-image">
+        </div>
+        <div class="impact-item">
+          <h4>CO2 Saved: <span id="co2SavedValue"></span> grams</h4>
+          <img src="./images/co2-clip-art.png" alt="CO2 Image" class="impact-image">
+        </div>
+      </div>
     </div>
 
   </div>  
@@ -122,18 +170,9 @@
   <script src="./scripts/fetchDistanceByMonth.js"></script>
   <script src="./scripts/fetchAllWorkouts.js"></script>
   <script src="./scripts/fetchTotalDistance.js"></script>
+  <script src="./scripts/addWorkoutForm.js"></script>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      var elems = document.querySelectorAll('select');
-      var instances = M.FormSelect.init(elems);
-  
-      var dateElems = document.querySelectorAll('.datepicker');
-      var dateInstances = M.Datepicker.init(dateElems, {
-        format: 'yyyy-mm-dd'
-      });
-    });
-
     document.addEventListener('DOMContentLoaded', async function() {
       try {
         const totalDistance = await fetchTotalDistance();
@@ -144,6 +183,7 @@
       } catch (error) {
         console.error('Error fetching total distance:', error);
       }
+      console.log(localStorage);
     });
 
     function round(value, decimals) {
@@ -160,6 +200,21 @@
         // Calculate and display the trees saved based on the total distance
         const treesSaved = round((totalDistance * 164) / 25000, 2);
         document.getElementById('treesSavedValue').innerText = treesSaved;
+
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    });
+
+    document.addEventListener('DOMContentLoaded', async function() {
+      try {
+        const totalDistance = await fetchTotalDistance();
+        console.log('Total Distance:', totalDistance);
+
+        document.getElementById('totalDistanceValue').innerText = totalDistance;
+
+        const co2Saved = round((totalDistance * 164), 2);
+        document.getElementById('co2SavedValue').innerText = co2Saved;
 
       } catch (error) {
         console.error('Error fetching data:', error);
