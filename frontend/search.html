@@ -1,88 +1,56 @@
 <!DOCTYPE html>
+
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Search Workouts</title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
-  <style>
-    body {
-      background-color: #f5f5f5;
-      color: #333;
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
 
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 20px;
-    }
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Workouts</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/search.css">
+  </head>
 
-    h2 {
-      margin-bottom: 20px;
-    }
+  <body>
+    <a href="index.html" class="return-button btn green">Return to Dashboard</a>
+    <div class="container">
+      <h3>Search Workouts</h3>
+      <form id="searchForm">
+        <div class="input-field">
+          <input id="duration" type="text" class="validate">
+          <label for="duration">Duration</label>
+        </div>
+        <div class="input-field">
+          <input id="distance" type="text" class="validate">
+          <label for="distance">Distance</label>
+        </div>
+        <div class="input-field">
+          <input id="workout_type" type="text" class="validate">
+          <label for="workout_type">Workout Type</label>
+        </div>
+        <div class="input-field col s12">
+          <button class="btn waves-effect waves-light" type="submit" name="action">
+            Search Workouts
+          </button>
+        </div>
+      </form>
+      <table id="workout-table" class="highlight responsive-table">
+        <thead>
+          <tr>
+            <th>Route</th>
+            <th>Date</th>
+            <th>Type</th>
+            <th>Distance</th>
+            <th>Duration</th>
+            <th>Heart Rate</th>
+          </tr>
+        </thead>
+        <tbody id="searchResults">
+        </tbody>
+      </table>
+    </div>
 
-    form {
-      margin-bottom: 20px;
-    }
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="./scripts/filterWorkouts.js"></script>
+  </body>
 
-    th {
-      font-weight: bold;
-      position: sticky;
-      top: 0;
-      background-color: #fff;
-    }
-
-    .return-button {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-    }
-  </style>
-</head>
-<body>
-  <a href="index.html" class="return-button btn green">Return to Dashboard</a>
-  <div class="container">
-    <h3>Search Workouts</h3>
-    <form id="searchForm">
-      <div class="input-field">
-        <input id="duration" type="text" class="validate">
-        <label for="duration">Duration</label>
-      </div>
-      <div class="input-field">
-        <input id="distance" type="text" class="validate">
-        <label for="distance">Distance</label>
-      </div>
-      <div class="input-field">
-        <input id="workout_type" type="text" class="validate">
-        <label for="workout_type">Workout Type</label>
-      </div>
-      <div class="input-field col s12">
-        <button class="btn waves-effect waves-light" type="submit" name="action">
-          Search Workouts
-        </button>
-      </div>
-    </form>
-    <table id="workout-table" class="highlight responsive-table">
-      <thead>
-        <tr>
-          <th>Route</th>
-          <th>Date</th>
-          <th>Type</th>
-          <th>Distance</th>
-          <th>Duration</th>
-          <th>Heart Rate</th>
-        </tr>
-      </thead>
-      <tbody id="searchResults">
-        <!-- Search results will be inserted here -->
-      </tbody>
-    </table>
-  </div>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <script src="./scripts/filterWorkouts.js"></script>
-</body>
 </html>

@@ -1,0 +1,96 @@
+body {
+    background-color: #f5f5f5;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.form-row .input-field {
+    flex: 1;
+    min-width: 200px;
+}
+
+.form-row .btn {
+    margin-top: -10px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.btn,
+.return-btn {
+    background-color: #4caf50;
+    color: #fff;
+}
+
+.return-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.btn:hover {
+    background-color: #45a049;
+}
+
+form {
+    margin-top: 20px;
+}
+
+label {
+    color: #333;
+}
+
+.collection {
+    margin-top: 20px;
+}
+
+#environmental-impact-section {
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #e0f7fa;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+#environmental-impact-section h3 {
+    color: #00796b;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.impact-info {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.impact-info h4 {
+    color: #004d40;
+    margin: 10px 0;
+}
+
+.impact-images {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.impact-image {
+    width: 100px;
+    height: auto;
+}
