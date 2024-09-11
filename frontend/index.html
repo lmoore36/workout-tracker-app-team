@@ -110,6 +110,7 @@
       <h3>Environmental Impact</h3>
       <div>
         <h4>Total Distance: <span id="totalDistanceValue"></span> km</h4>
+        <h4>Trees Saved: <span id="treesSavedValue"></span></h4>
         </div>
       <div id="treesSaved"></div>
     </div>
@@ -142,6 +143,26 @@
 
       } catch (error) {
         console.error('Error fetching total distance:', error);
+      }
+    });
+
+    function round(value, decimals) {
+      return Number(Math.round(value + 'e' + decimals) + 'e-' + decimals);
+    }
+
+    document.addEventListener('DOMContentLoaded', async function() {
+      try {
+        const totalDistance = await fetchTotalDistance();
+        console.log('Total Distance:', totalDistance);
+
+        document.getElementById('totalDistanceValue').innerText = totalDistance;
+
+        // Calculate and display the trees saved based on the total distance
+        const treesSaved = round((totalDistance * 164) / 25000, 2);
+        document.getElementById('treesSavedValue').innerText = treesSaved;
+
+      } catch (error) {
+        console.error('Error fetching data:', error);
       }
     });
   </script>
