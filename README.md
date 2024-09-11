@@ -15,7 +15,7 @@ The API also provides endpoints for aggregating data, such as calculating the to
 ## Design Decisions
 
 This project uses the following design principles:
-1. **RESTful API**: The application follows RESTful design principles, allowing clients to interact with resources like workouts through standard HTTP methods (GET, POST, PUT, DELETE).
+1. **RESTful API**: the application follows RESTful design principles allowing interaction through standard HTTP methods (GET, POST, PUT, DELETE)
 2. **Flask**: Dependencies:
 Flask-RESTful: defines resources as classes with methods inside
 Flask-CORS: used to allow a frontend to access the api for demonstration
