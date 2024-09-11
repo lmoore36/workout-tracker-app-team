@@ -16,8 +16,6 @@ This project uses the following design principles:
 1. **RESTful API**: The application follows RESTful design principles, allowing clients to interact with resources like workouts through standard HTTP methods (GET, POST, PUT, DELETE).
 2. **Flask and Flask-RESTful**: Flask is used as the web framework because it's lightweight and easy to extend. Flask-RESTful simplifies the development of REST APIs by offering built-in request handling and response generation.
 3. **SQLite for Database**: SQLite is chosen as the database because it is lightweight and easy to set up for development. It stores the workouts and user data in a simple format.
-4. **Modular Structure**: The application is structured with separate files for models, routes, and database configuration, making the project easier to maintain and scale.
-5. **Docker (Optional)**: You can containerize the application for consistent development environments and easier deployment.
 
 ## API Endpoints
 
