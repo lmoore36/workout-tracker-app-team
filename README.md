@@ -14,7 +14,7 @@ The API also provides endpoints for aggregating data, such as calculating the to
 
 ## Design Decisions
 
-This project uses the following design principles:
+This project uses the following design:
 1. **RESTful API**: the application follows RESTful design principles allowing interaction through standard HTTP methods (GET, POST, PUT, DELETE)
 2. **Flask**:
 * Flask-RESTful: defines resources as classes with methods inside
