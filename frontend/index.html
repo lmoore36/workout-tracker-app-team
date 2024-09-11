@@ -12,9 +12,6 @@
   <body>
     <div class="container">
       <h3> Running Workout Tracker </h3>
-
-      <!-- search page button -->
-      <a href="search.html" class="return-btn waves-effect waves-light btn green">Search Workouts</a>
       
       <div class="row">
         <div class="row">
@@ -46,7 +43,7 @@
               <!-- choose workout type -->
               <div class="input-field col s4">
                 <select id="add_workout_type" required>
-                  <option value="" disabled selected>Choose your option</option>
+                  <option value="" disabled selected>Workout Type</option>
                   <option value="RECOVERY">Recovery</option>
                   <option value="LONG">Long</option>
                   <option value="TEMPO">Tempo</option>
@@ -54,7 +51,6 @@
                   <option value="INTERVAL">Interval</option>
                   <option value="HILL">Hill</option>
                 </select>
-                <label for="add_workout_type">Workout Type</label>
               </div>
 
               <!-- choose date -->
@@ -69,12 +65,16 @@
                 <label for="add_heart_rate">Heart Rate</label>
               </div>
 
-              <!-- add workout button -->
               <div class="input-field col s12">
-                <button class="btn waves-effect waves-light" type="submit" name="action">
-                  Add Workout
-                </button>
+                <div class="button-container">
+                    <!-- Add Workout Button -->
+                    <button class="btn waves-effect waves-light" type="submit" name="action"> Add Workout </button>
+                    
+                    <!-- Search Workouts Button -->
+                    <a href="search.html" class="btn waves-effect waves-light"> Search Workouts </a>
+                </div>
               </div>
+
             </div>
 
           </form>
@@ -94,14 +94,18 @@
             <h4> You have run <span id="totalDistanceValue"></span> kilometers in total!</h4>
             <h5> By running instead of driving you are benefiting the environment!</h5>
           </div>
-          <div class="impact-item">
-            <h4>Trees Saved: <span id="treesSavedValue"></span></h4>
-            <img src="./images/tree-clip-art.png" alt="Tree Image" class="impact-image">
+
+          <div class="impact-calculations">
+            <div class="impact-item">
+              <h4>Trees Saved: <span id="treesSavedValue"></span></h4>
+              <img src="./images/tree-clip-art.png" alt="Tree Image" class="impact-image">
+            </div>
+            <div class="impact-item">
+              <h4>CO2 Saved: <span id="co2SavedValue"></span> grams</h4>
+              <img src="./images/co2-clip-art.png" alt="CO2 Image" class="impact-image">
+            </div>
           </div>
-          <div class="impact-item">
-            <h4>CO2 Saved: <span id="co2SavedValue"></span> grams</h4>
-            <img src="./images/co2-clip-art.png" alt="CO2 Image" class="impact-image">
-          </div>
+          
         </div>
 
       </div>

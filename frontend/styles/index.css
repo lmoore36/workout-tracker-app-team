@@ -1,87 +1,123 @@
 body {
-    background-color: #f5f5f5;
-    font-family: Arial, sans-serif;
+    background-color: #e0f7fa; /* Soft blue for nature calmness */
+    font-family: 'Arial', sans-serif;
+    background-image: url('./images/nature-texture.jpg'); /* Subtle nature texture image */
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 .container {
-    max-width: 800px;
+    max-width: 1400px; /* Increased width for better space usage */
     margin: 0 auto;
-    padding: 20px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.9); /* Transparent white background */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    position: relative; /* To allow absolute positioning for the button */
 }
 
-h2 {
-    color: #333;
+h2, h3 {
+    font-family: 'Merriweather', serif; /* Organic-looking serif font */
+    color: #2e7d32; /* Earthy green for headings */
     margin-bottom: 20px;
+    text-align: center;
 }
 
+/* Styling for form rows and inputs */
 .form-row {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    gap: 10px;
 }
 
 .form-row .input-field {
     flex: 1;
     min-width: 200px;
+    background-color: #e8f5e9; /* Light green background for all inputs */
+    border-radius: 8px;
+    padding: 10px;
+    box-sizing: border-box; /* Ensure padding doesn't overflow the width */
 }
 
-.form-row .btn {
-    margin-top: -10px;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
+.form-row .input-field select,
+.form-row .input-field input {
+    width: 100%; /* Ensure all inputs and selects take full width */
 }
 
-.btn,
-.return-btn {
-    background-color: #4caf50;
+/* Button Container */
+.button-container {
+    display: flex;             /* Use Flexbox to align buttons horizontally */
+    justify-content: center;   /* Center both buttons */
+    align-items: center;       /* Align buttons vertically */
+    gap: 20px;                 /* Space between buttons */
+}
+
+.button-container .btn {                  /* Make both buttons the same size */
+    text-align: center;         /* Center text inside buttons */ 
+    background-color: #43a047; /* Green action buttons */
     color: #fff;
+    border-radius: 6px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
 }
 
-.return-btn {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-}
-
-.btn:hover {
-    background-color: #45a049;
-}
-
-form {
-    margin-top: 20px;
+.button-container .btn:hover {
+    background-color: #388e3c; /* Darker green on hover */
 }
 
 label {
-    color: #333;
+    color: #2e7d32;
 }
 
-.collection {
-    margin-top: 20px;
+#monthly-distance-section h3 {
+    margin-top: 5px;             /* Reduce the top margin for the heading */
+    margin-bottom: 10px;          /* Reduce the bottom margin for the heading */
+    font-size: 32px;              /* Ensure the font size remains as desired */
+    text-align: center;
 }
 
+/* Style for the environmental impact section */
 #environmental-impact-section {
-    padding: 20px;
+    padding: 10px;
     border-radius: 10px;
-    background-color: #e0f7fa;
+    background: linear-gradient(135deg, #a5d6a7, #4caf50); /* Nature-inspired gradient */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
 }
 
 #environmental-impact-section h3 {
-    color: #00796b;
+    color: #ffffff;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    font-size: 32px;  
 }
 
 .impact-info {
     text-align: center;
-    margin-bottom: 20px;
+}
+
+.impact-calculations {
+    display: flex;                  /* Use Flexbox to align items horizontally */
+    justify-content: center;        /* Center the items horizontally */
+    gap: 20px;                      /* Add space between the items */
+    flex-wrap: wrap;                /* Allow items to wrap on smaller screens */
+    text-align: center;             /* Center the content inside the items */
+    margin-bottom: 20px;            /* Add some space below the container */
 }
 
 .impact-info h4 {
-    color: #004d40;
-    margin: 10px 0;
+    color: #1b5e20; /* Darker green for text */
+    margin: 10px 10px;
+    
+    font-size: 24px;  
+}
+
+.impact-info h5 {
+    color: #000000; /* Darker green for text */
+    margin: 10px 10px;
+    font-size: 20px;  
 }
 
 .impact-images {
@@ -93,4 +129,11 @@ label {
 .impact-image {
     width: 100px;
     height: auto;
+    border-radius: 30%;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Softer shadow */
+}
+
+.impact-item img {
+    filter: brightness(0.9); /* Slightly brighten images */
 }
